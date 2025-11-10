@@ -1,0 +1,57 @@
+<section 
+class="flex flex-col justify-center">
+<div class="md:flex flex-row mt-24 mx-10">
+
+  <div 
+  class="landingText 
+  bg-cyan-600 
+  h-40
+  md:w-[49%]
+  rounded-3xl
+  mt-2
+  p-4
+  text-white
+  min-h-fit"
+  >
+  <h1
+  class="pt-5
+  font-extrabold
+  text-indigo-950"
+  >
+  About this app
+  </h1>
+
+    <p>
+      This app allows a person to enter their github username and get a list of all the repositories in their account.
+    </p>
+    
+  </div>
+
+  <div class="
+  md:w-px md:mx-auto
+  md:h-40 
+  bg-white
+  sm:h-px sm:w-full sm:my-3"
+  ></div>
+
+  
+  <div id="form"
+  class="
+  bg-cyan-900
+  h-40 min-h-fit 
+  mt-2
+  md:w-[49%]
+  <!-- md:ml-1 -->
+  rounded-3xl
+  "
+  >
+  <app-form (sendUser)="initRepos($event)"></app-form>
+</div>
+
+</div>
+
+  <!-- @if(repositories.userRepos().length > 0){
+    <app-repo-details></app-repo-details>
+  } -->
+  <!-- <pre>{{repositories.userRepos() | json}}</pre> -->
+</section>

@@ -1,0 +1,138 @@
+<div id="nav" class="pr-3 flex justify-end">
+  <nav class="text-xl text-white bg-neutral-800 rounded-2xl mr-0 px-2">
+    <a routerLink="">Back to HomePage</a>
+  </nav>
+</div>
+
+<div class="search-bar border mx-4 flex min-w-[200px] justify-between md:w-1/2 rounded-xl px-1 my-7 shadow-sm shadow-white bg-gray-400 text-white relative">
+
+  <input
+  class="border-0
+  w-11/12
+  focus:border-none focus:outline-none
+  rounded-l-xl
+  focus:bg-none
+  px-1
+  "
+  placeholder="enter a repository name"
+  type="text"
+  name="inputtedRepoName"
+  [(ngModel)]="inputtedRepoName"
+  >
+  <button (click)="displaySearched()" class="">Search</button>
+</div>
+
+<div class="repositories
+bg-black 
+text-white 
+mx-4 
+flex 
+flex-wrap 
+rounded-t-md
+min-w-[501px]
+min-h-fit
+justify-center
+relative"
+>
+
+  @for(repo of toDisplay(); track $index){
+    <div 
+    class="repo 
+    border-2 
+    border-blue-800 
+    mx-1  my-1
+    rounded-2xl 
+    relative
+    w-[48%]
+    min-w-[500px]
+    max-h-fit
+    min-h-[240px]"
+    >
+      <h1 
+      class="
+      font-extrabold 
+      text-3xl 
+      p-2 
+      mr-2"
+      >
+        {{repo.name}}
+      </h1>
+      <div class="description bg-gray-900 rounded-xl my-1 mt-3 w-fit h-[50%] flex flex-col flex-wrap">
+        <h5 
+        class="italic p-1">
+          Description
+        </h5>
+        <p class="px-2 text-xl">{{repo.description ? repo.description : 'No description for this repository'}}</p>
+      </div>
+     
+        <div class="flex flex-col absolute top-0.5 right-2 gap-y-2 px-2 py-1 mb-1 ">
+          <p class="bg-amber-800 rounded-sm w-full px-2">
+            <span class="bg-gray-800 rounded-md">🍴Forks: </span> <span class="bg-white py-0 px-2 text-cyan-950 rounded-full">{{repo.forks_count}}</span> 
+          </p>
+          <p class="bg-amber-800 w-full rounded-sm px-2">
+            <span class="bg-gray-800 rounded-md">⭐Stars: </span> <span class="bg-white py-0 px-2 text-cyan-950 rounded-full" >{{repo.stargazers_count}}</span>
+          </p>
+        </div>
+        <button 
+        type="button" 
+        class="
+        bg-gray-800 
+        ml-2 p-2 mb-1
+        rounded-lg
+        hover:text-white 
+        hover:bg-blue-700
+        duration-300 ease-in-out"
+        >
+        <a 
+        target="_blank" 
+        [href]="repo.html_url"
+        >
+          Visit Repository
+        </a>
+        </button>
+
+      </div>
+    }
+
+
+    @if(loading){
+      <div class="loadingOverlay absolute top-[50%] left-[50%] z-50">
+        <div class="loader bg-white border-4 border-t-blue-800 rounded-full p-5 animate-spin">
+        </div>
+      </div>
+    }
+
+</div>
+<section class=" flex items-center justify-center bg-black mx-4 min-w-[501px] rounded-b-md mb-2">
+
+  <div class="bg-slate-900
+  h-20 w-60
+  flex flex-row
+  justify-center
+  items-center
+  self-center
+  "
+  >
+  @if(!showClearSearchBtn){
+
+    <button (click)="nextPage()"
+    class="text-white
+    mx-5"
+    >
+    Next
+  </button>
+  
+  <button (click)="previousPage()"
+  class="text-white
+  mx-5"
+  >
+  Prev
+</button>
+}
+
+@if(showClearSearchBtn){
+    <button (click)="clearSearch()" class="text-white">Clear Search</button>
+}
+</div>
+</section>
+

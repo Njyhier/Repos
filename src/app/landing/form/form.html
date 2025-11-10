@@ -1,0 +1,22 @@
+<div id="form">
+  <form #inputForm="ngForm" (ngSubmit)="submitUserName()" 
+  class="
+  flex flex-col
+  p-4
+  min-h-fit
+  "
+  >
+    <h2 class=" flex justify-center text-amber-50 font-extrabold text-4xl">Enter username below</h2>
+    <input type="text"
+      id="name"
+      name="username"
+      [(ngModel)]="userName"
+      class="border-b-4
+      mb-3 
+      focus:border-b-2 focus:outline-0 duration-200 ease-in-out
+      px-2.5
+      "
+    >
+    <button type="submit" class="bg-blue-400 w-fit rounded-3xl text-amber-50 p-1">Get Repositories</button>
+  </form>
+</div>
