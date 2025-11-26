@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, Signal, signal } from '@angular/core';
 import { AppService } from '../../../services/app/app-service';
 import { JsonPipe } from '@angular/common';
 import { IPost } from '../../../models/post.interface';
@@ -13,8 +13,8 @@ import { concatMap, map, Observable, switchMap } from 'rxjs';
 export class Posts {
   appService: AppService = inject(AppService);
 
-  posts: IPost[] = [];
-
+  posts= signal<IPost[]>([]);
+  postsLength = computed(() => this.posts().length);
   constructor() {
     // this.listPosts();
     // this.fetchDataUsingConcatMap();
@@ -27,7 +27,7 @@ export class Posts {
       ?.pipe(
         map((posts) => {
           console.log(posts, 'Fetched Posts before mapping IDs');
-          this.posts = posts;
+          // this.posts = posts;
           return posts.map((post) => post.id);
         })
       )
@@ -49,13 +49,13 @@ export class Posts {
   fetchDataUsingSwithcMap(): void {
     this.appService
       .listPosts()
-      // ?.pipe(
-      //   map((posts) => {
-      //     console.log(posts, 'Fetched Posts before mapping IDs');
-      //     this.posts = posts;
-      //     return posts.map((post) => post.id);
-      //   })
-      // )
+      ?.pipe(
+        map((posts) => {
+          console.log(posts, 'Fetched Posts before mapping IDs');
+          this.posts.set(posts);
+          return posts.map((post) => post.id);
+        })
+      )
       ?.pipe(
         switchMap((posts) => {
           console.log(posts, 'Mapped Post IDs');

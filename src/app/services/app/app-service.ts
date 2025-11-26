@@ -40,7 +40,7 @@ export class AppService {
    * @returns Observable<any>
    */
   listUsers(): Observable<any> {
-    return this.httpClient.get<any>("https://jsonplaceholder.typicode.com/use")
+    return this.httpClient.get<any>("https://jsonplaceholder.typicode.com/users")
   }
 
   /**
@@ -49,14 +49,5 @@ export class AppService {
    */
   listComments(): Observable<any> {
     return this.httpClient.get<any>("https://jsonplaceholder.typicode.com/comments")
-  }
-
-  /**
-   * A test method by Crispus Njenga
-   * @param param0 
-   * @returns string
-   */
-  testCrispus({name, age}: {name: string, age: number}){
-    return `Hello ${name}, you are ${age} years old.`;
   }
 }

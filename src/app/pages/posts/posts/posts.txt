@@ -1,0 +1,15 @@
+1. Modules, Parent and child. 
+    Loadchilren when loading a child module. 
+    loadComponent, loades the component.
+2. Observables 
+    ConcatMap 
+    SwitchMap 
+    Map
+    SwitchAll
+    pipe 
+    Subscribe
+3. OOP -> Clases, Functions{Positional argument}
+4. Signals
+    signal 
+    computed 
+    Use case
