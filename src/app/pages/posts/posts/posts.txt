@@ -9,6 +9,9 @@
     pipe 
     Subscribe
 3. OOP -> Clases, Functions{Positional argument}
+    Design patterns - https://www.freecodecamp.org/news/javascript-design-patterns-explained/
+        - Decoratator 
+        - Module Pattern
 4. Signals
     signal 
     computed 
