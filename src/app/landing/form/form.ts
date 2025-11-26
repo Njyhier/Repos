@@ -4,7 +4,7 @@ import { RouterLink, Router } from "@angular/router";
 
 @Component({
   selector: 'app-form',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   templateUrl: './form.html',
   styleUrl: './form.css',
 })

@@ -3,6 +3,10 @@ import { RepoDetails } from './repo-details/repo-details';
 import { Landing } from './landing/landing';
 
 export const routes: Routes = [
-  {path:'', component: Landing},
-  {path:'repo-details', component: RepoDetails}
+  { path: '', component: Landing },
+  { path: 'repo-details', component: RepoDetails },
+  {
+    path: 'posts',
+    loadChildren: () => import('./pages/posts/posts-module').then((m) => m.PostsModule),
+  },
 ];
